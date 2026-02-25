@@ -2,17 +2,36 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", useCase: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Pipebot Demo Request");
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCompany: ${formData.company}\nUse Case: ${formData.useCase}`);
-    window.open(`mailto:info@pipebot.ai?subject=${subject}&body=${body}`);
+    setSubmitting(true);
+
+    const { error } = await supabase.from("enquiries").insert({
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim() || null,
+      company: formData.company.trim() || null,
+      use_case: formData.useCase.trim() || null,
+    });
+
+    setSubmitting(false);
+
+    if (error) {
+      toast({ title: "Error", description: "Failed to submit. Please try again.", variant: "destructive" });
+      return;
+    }
+
     setSubmitted(true);
+    toast({ title: "Demo request submitted!", description: "We'll reach out within 24 hours." });
   };
 
   return (
@@ -55,15 +74,37 @@ const Contact = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {[
-                    { name: "name", label: "Your Name", type: "text" },
-                    { name: "email", label: "Email Address", type: "email" },
-                    { name: "phone", label: "Phone Number", type: "tel" },
-                    { name: "company", label: "Company Name", type: "text" },
+                    { name: "name", label: "Your Name", type: "text", required: true, maxLength: 100 },
+                    { name: "email", label: "Email Address", type: "email", required: true, maxLength: 255 },
+                    { name: "phone", label: "Phone Number", type: "tel", required: false, maxLength: 20 },
+                    { name: "company", label: "Company Name", type: "text", required: false, maxLength: 100 },
                   ].map((field) => (
-                    <input key={field.name} type={field.type} placeholder={field.label} required={field.name !== "company"} value={(formData as any)[field.name]} onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })} className="w-full bg-muted/50 border border-glass-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50" />
+                    <input
+                      key={field.name}
+                      type={field.type}
+                      placeholder={field.label}
+                      required={field.required}
+                      maxLength={field.maxLength}
+                      value={(formData as any)[field.name]}
+                      onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
+                      className="w-full bg-muted/50 border border-glass-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    />
                   ))}
-                  <textarea placeholder="Tell us about your use case" value={formData.useCase} onChange={(e) => setFormData({ ...formData, useCase: e.target.value })} rows={3} className="w-full bg-muted/50 border border-glass-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none" />
-                  <button type="submit" className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold btn-glow hover:brightness-110 transition">Book Demo</button>
+                  <textarea
+                    placeholder="Tell us about your use case"
+                    value={formData.useCase}
+                    onChange={(e) => setFormData({ ...formData, useCase: e.target.value })}
+                    rows={3}
+                    maxLength={1000}
+                    className="w-full bg-muted/50 border border-glass-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                  />
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold btn-glow hover:brightness-110 transition disabled:opacity-50"
+                  >
+                    {submitting ? "Submitting..." : "Book Demo"}
+                  </button>
                 </form>
               )}
             </motion.div>

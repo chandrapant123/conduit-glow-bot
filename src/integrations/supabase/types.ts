@@ -76,6 +76,42 @@ export type Database = {
           },
         ]
       }
+      enquiries: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          status: string
+          updated_at: string
+          use_case: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          status?: string
+          updated_at?: string
+          use_case?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          status?: string
+          updated_at?: string
+          use_case?: string | null
+        }
+        Relationships: []
+      }
       page_sections: {
         Row: {
           content: Json | null

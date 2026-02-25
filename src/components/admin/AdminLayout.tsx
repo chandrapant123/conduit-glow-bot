@@ -1,7 +1,7 @@
 import { useEffect, useState, ReactNode } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { LayoutDashboard, FileText, Settings, BookOpen, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, FileText, Settings, BookOpen, LogOut, Menu, X, MessageSquare } from "lucide-react";
 import pipebotLogo from "@/assets/pipebot-logo.png";
 
 interface AdminLayoutProps {
@@ -12,6 +12,7 @@ const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Pages & SEO", href: "/admin/pages", icon: FileText },
   { label: "Blog", href: "/admin/blog", icon: BookOpen },
+  { label: "Enquiries", href: "/admin/enquiries", icon: MessageSquare },
   { label: "Site Settings", href: "/admin/settings", icon: Settings },
 ];
 
