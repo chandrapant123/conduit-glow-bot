@@ -1,19 +1,36 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import pipebotLogo from "@/assets/pipebot-logo.png";
+
+const productLinks = [
+  { label: "WhatsApp Business API", href: "/whatsapp-business-api" },
+  { label: "Bulk WhatsApp Marketing", href: "/bulk-whatsapp" },
+  { label: "AI WhatsApp Chatbot", href: "/ai-whatsapp-chatbot" },
+  { label: "RCS Messaging", href: "/rcs-messaging" },
+  { label: "Bulk SMS", href: "/bulk-sms" },
+];
+
+const solutionLinks = [
+  { label: "Customer Support Automation", href: "/solutions/customer-support-automation" },
+  { label: "Sales Automation", href: "/solutions/sales-automation" },
+  { label: "Marketing Automation", href: "/solutions/marketing-automation" },
+  { label: "E-commerce Automation", href: "/solutions/ecommerce-automation" },
+];
 
 const navLinks = [
-  { label: "Features", href: "/features" },
+  { label: "Home", href: "/" },
+  { label: "Products", href: "#", children: productLinks },
+  { label: "Solutions", href: "/solutions", children: solutionLinks },
   { label: "Pricing", href: "/pricing" },
-  { label: "API & Docs", href: "/api-docs" },
-  { label: "Enterprise", href: "/enterprise" },
-  { label: "Blog", href: "/blog" },
-  { label: "FAQ", href: "/faq" },
+  { label: "Resources", href: "/resources" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -30,38 +47,50 @@ const Navbar = () => {
         scrolled ? "glass-card border-b border-glass-border" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-lg bg-primary/20 flex items-center justify-center glow-blue">
-            <span className="text-primary font-display font-bold text-lg">P</span>
-          </div>
-          <span className="font-display font-bold text-xl text-foreground">
-            Pipe<span className="text-primary">bot</span>
-          </span>
+      <div className="container mx-auto flex items-center justify-between px-6 py-3">
+        <a href="/" className="flex items-center gap-2">
+          <img src={pipebotLogo} alt="Pipebot Logo" className="h-10 w-auto" />
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
-            >
-              {link.label}
-            </a>
+            <div key={link.label} className="relative group">
+              {link.children ? (
+                <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                  {link.label}
+                  <ChevronDown size={14} />
+                </button>
+              ) : (
+                <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                  {link.label}
+                </a>
+              )}
+              {link.children && (
+                <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="glass-card border border-glass-border rounded-xl p-2 min-w-[240px]">
+                    {link.children.map((child) => (
+                      <a
+                        key={child.href}
+                        href={child.href}
+                        className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
           <a
-            href="/demo"
+            href="/contact"
             className="bg-primary text-primary-foreground px-5 py-2 rounded-lg text-sm font-semibold btn-glow hover:brightness-110 transition"
           >
-            Start Free Trial
+            Get Started
           </a>
         </div>
 
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
+        <button className="lg:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -70,23 +99,38 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden glass-card border-t border-glass-border px-6 py-4 space-y-3"
+          className="lg:hidden glass-card border-t border-glass-border px-6 py-4 space-y-1"
         >
           {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="block text-muted-foreground hover:text-primary transition-colors py-2"
-            >
-              {link.label}
-            </a>
+            <div key={link.label}>
+              {link.children ? (
+                <>
+                  <button
+                    onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
+                    className="flex items-center justify-between w-full text-muted-foreground hover:text-primary transition-colors py-2"
+                  >
+                    {link.label}
+                    <ChevronDown size={14} className={`transition-transform ${openDropdown === link.label ? "rotate-180" : ""}`} />
+                  </button>
+                  {openDropdown === link.label && (
+                    <div className="pl-4 space-y-1">
+                      {link.children.map((child) => (
+                        <a key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="block text-sm text-muted-foreground hover:text-primary py-1.5">
+                          {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <a href={link.href} onClick={() => setMobileOpen(false)} className="block text-muted-foreground hover:text-primary transition-colors py-2">
+                  {link.label}
+                </a>
+              )}
+            </div>
           ))}
-          <a
-            href="/demo"
-            className="block bg-primary text-primary-foreground px-5 py-2 rounded-lg text-sm font-semibold text-center btn-glow"
-          >
-            Start Free Trial
+          <a href="/contact" className="block bg-primary text-primary-foreground px-5 py-2 rounded-lg text-sm font-semibold text-center btn-glow mt-2">
+            Get Started
           </a>
         </motion.div>
       )}

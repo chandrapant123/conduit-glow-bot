@@ -1,46 +1,34 @@
 import { motion } from "framer-motion";
-import { CheckCircle, ShoppingCart, Truck, CreditCard, UserPlus, RotateCcw } from "lucide-react";
+import { Building2, ShoppingBag, GraduationCap, Stethoscope, Home, Package } from "lucide-react";
 
-const useCases = [
-  { icon: CheckCircle, label: "Order Confirmations", desc: "Instant WhatsApp notification on every new order." },
-  { icon: Truck, label: "Shipping Updates", desc: "Real-time delivery tracking right in WhatsApp." },
-  { icon: RotateCcw, label: "Abandoned Cart Recovery", desc: "Automated reminders that bring customers back." },
-  { icon: CreditCard, label: "Payment Alerts", desc: "Secure payment confirmations and reminders." },
-  { icon: UserPlus, label: "Account Notifications", desc: "Welcome messages, OTPs, and onboarding flows." },
+const industries = [
+  { icon: Building2, label: "Fintech" },
+  { icon: ShoppingBag, label: "E-commerce" },
+  { icon: GraduationCap, label: "EdTech" },
+  { icon: Stethoscope, label: "Healthcare" },
+  { icon: Home, label: "Real Estate" },
+  { icon: Package, label: "D2C Brands" },
 ];
 
 const UseCases = () => (
-  <section className="py-24 section-gradient" id="usecases">
+  <section className="py-24 section-gradient" id="industries">
     <div className="container mx-auto px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
+      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-          Real-World <span className="text-gradient-primary">Use Cases</span>
+          Industries We <span className="text-gradient-primary">Serve</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-          See how businesses use Pipebot to automate every touchpoint.
+          Pipebot powers communication for businesses across verticals.
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-5">
-        {useCases.map((uc, i) => (
-          <motion.div
-            key={uc.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="glass-card p-6 text-center hover:border-primary/30 transition-all group"
-          >
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 max-w-4xl mx-auto">
+        {industries.map((ind, i) => (
+          <motion.div key={ind.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-card p-6 text-center hover:border-primary/30 transition-all group">
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-              <uc.icon className="text-primary" size={22} />
+              <ind.icon className="text-primary" size={22} />
             </div>
-            <h4 className="font-display font-bold text-sm mb-2 text-foreground">{uc.label}</h4>
-            <p className="text-xs text-muted-foreground">{uc.desc}</p>
+            <h4 className="font-display font-bold text-sm text-foreground">{ind.label}</h4>
           </motion.div>
         ))}
       </div>

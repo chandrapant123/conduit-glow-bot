@@ -2,6 +2,7 @@ import { useEffect, useState, ReactNode } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { LayoutDashboard, FileText, Settings, BookOpen, LogOut, Menu, X } from "lucide-react";
+import pipebotLogo from "@/assets/pipebot-logo.png";
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -56,9 +57,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-card border-r border-glass-border transform transition-transform md:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="p-4 flex items-center justify-between border-b border-glass-border">
           <Link to="/admin" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-display font-bold">P</span>
-            </div>
+            <img src={pipebotLogo} alt="Pipebot" className="h-8 w-auto" />
             <span className="font-display font-bold text-foreground">Admin</span>
           </Link>
           <button className="md:hidden text-muted-foreground" onClick={() => setSidebarOpen(false)}>

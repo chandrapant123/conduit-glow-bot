@@ -22,6 +22,15 @@ const Index = () => {
       <Security />
       <CTASection />
       <Footer />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Pipebot",
+        "applicationCategory": "BusinessApplication",
+        "description": "AI-powered WhatsApp & Messaging Automation Platform for Sales, Support & Marketing",
+        "url": "https://conduit-glow-bot.lovable.app",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }) }} />
     </div>
   );
 };

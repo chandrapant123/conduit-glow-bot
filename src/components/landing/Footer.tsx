@@ -1,7 +1,25 @@
+import pipebotLogo from "@/assets/pipebot-logo.png";
+
 const footerLinks = {
-  Product: ["Features", "Pricing", "White-Label", "Integrations"],
-  Developers: ["Documentation", "API Reference", "Modules", "Changelog"],
-  Company: ["About", "Contact", "Privacy", "Terms"],
+  Products: [
+    { label: "WhatsApp Business API", href: "/whatsapp-business-api" },
+    { label: "Bulk WhatsApp", href: "/bulk-whatsapp" },
+    { label: "AI Chatbot", href: "/ai-whatsapp-chatbot" },
+    { label: "RCS Messaging", href: "/rcs-messaging" },
+    { label: "Bulk SMS", href: "/bulk-sms" },
+  ],
+  Solutions: [
+    { label: "Customer Support", href: "/solutions/customer-support-automation" },
+    { label: "Sales Automation", href: "/solutions/sales-automation" },
+    { label: "Marketing Automation", href: "/solutions/marketing-automation" },
+    { label: "E-commerce", href: "/solutions/ecommerce-automation" },
+  ],
+  Resources: [
+    { label: "Blog", href: "/blog" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Contact", href: "/contact" },
+    { label: "FAQ", href: "/faq" },
+  ],
 };
 
 const Footer = () => (
@@ -9,16 +27,11 @@ const Footer = () => (
     <div className="container mx-auto px-6">
       <div className="grid md:grid-cols-4 gap-10 mb-12">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-display font-bold">P</span>
-            </div>
-            <span className="font-display font-bold text-lg text-foreground">
-              Pipe<span className="text-primary">bot</span>
-            </span>
-          </div>
+          <a href="/" className="flex items-center gap-2 mb-4">
+            <img src={pipebotLogo} alt="Pipebot" className="h-10 w-auto" />
+          </a>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            The complete WhatsApp marketing & automation platform for agencies, SaaS, and enterprises.
+            AI-powered WhatsApp & messaging automation platform for sales, support & marketing.
           </p>
           <p className="text-sm text-muted-foreground mt-3">
             <a href="mailto:info@pipebot.ai" className="text-primary hover:underline">info@pipebot.ai</a>
@@ -32,9 +45,9 @@ const Footer = () => (
             <h4 className="font-display font-bold text-sm text-foreground mb-4">{title}</h4>
             <ul className="space-y-2">
               {links.map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {link}
+                <li key={link.href}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
                   </a>
                 </li>
               ))}

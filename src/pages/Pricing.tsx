@@ -1,49 +1,41 @@
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const tiers = [
   {
-    name: "Free Trial",
-    price: "$0",
-    period: "14 days",
-    desc: "Perfect for exploring Pipebot's capabilities",
-    bestFor: "Individuals & testers",
-    features: ["1 WhatsApp number", "500 messages/month", "Basic bot builder", "Contact management", "Email support"],
-    cta: "Start Free Trial",
-    highlight: false,
+    name: "WhatsApp API",
+    desc: "Conversation-based pricing",
+    items: ["Marketing conversations", "Utility conversations", "Authentication conversations", "Service conversations (free 24h)", "Multi-agent inbox included", "Automation builder included"],
+    cta: "Talk to Sales",
   },
   {
-    name: "Starter",
-    price: "$49",
-    period: "/month",
-    desc: "For growing businesses ready to automate",
-    bestFor: "Small businesses & freelancers",
-    features: ["3 WhatsApp numbers", "10,000 messages/month", "AI bot builder", "CRM & lead scoring", "Bulk campaigns", "Webhook integrations", "Priority support"],
-    cta: "Get Started",
-    highlight: false,
+    name: "Bulk Campaigns",
+    desc: "Volume-based pricing",
+    items: ["Pay per message sent", "No minimum commitment", "Volume discounts available", "Real-time delivery tracking", "Template management", "Campaign analytics"],
+    cta: "Get Quote",
   },
   {
-    name: "Professional",
-    price: "$149",
-    period: "/month",
-    desc: "For agencies and scaling teams",
-    bestFor: "Agencies & growing teams",
-    features: ["10 WhatsApp numbers", "50,000 messages/month", "Advanced AI training", "Multi-agent live chat", "eCommerce automation", "Analytics & exports", "API access", "Dedicated support"],
-    cta: "Get Started",
-    highlight: true,
+    name: "SMS Platform",
+    desc: "Competitive per-SMS rates",
+    items: ["Transactional SMS", "Promotional SMS", "OTP SMS (priority routes)", "DLT compliant", "Two-way SMS", "Delivery reports"],
+    cta: "Get Quote",
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    desc: "For large-scale multi-tenant operations",
-    bestFor: "SaaS founders & enterprises",
-    features: ["Unlimited numbers", "Unlimited messages", "White-label branding", "Multi-tenant architecture", "Custom integrations", "SLA & dedicated manager", "Custom module development", "On-premise option"],
-    cta: "Contact Sales",
-    highlight: false,
+    name: "RCS Messaging",
+    desc: "Rich messaging pricing",
+    items: ["Interactive message pricing", "Rich media included", "Branded sender ID", "Fallback to SMS included", "Carousels & buttons", "Read receipts"],
+    cta: "Get Quote",
   },
+];
+
+const faqs = [
+  { q: "How does WhatsApp API pricing work?", a: "WhatsApp API uses conversation-based pricing. You pay per 24-hour conversation window, with rates varying by category (marketing, utility, authentication, service)." },
+  { q: "Are there any hidden fees?", a: "No hidden fees. You pay only for conversations and messages sent. Platform access is included." },
+  { q: "Do you offer enterprise pricing?", a: "Yes, we offer custom enterprise plans with volume discounts, dedicated support, and tailored SLAs." },
+  { q: "Can I start with a free trial?", a: "Yes, get started with a free trial. No credit card required." },
 ];
 
 const Pricing = () => (
@@ -53,59 +45,46 @@ const Pricing = () => (
       <div className="container mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl md:text-6xl font-display font-bold mb-4">
-            Simple, Transparent <span className="text-gradient-primary">Pricing</span>
+            Transparent WhatsApp & Messaging <span className="text-gradient-hero">Pricing</span>
           </h1>
-          <p className="text-lg text-muted-foreground">Choose the plan that fits your growth. Upgrade or downgrade anytime.</p>
+          <p className="text-lg text-muted-foreground">Simple, usage-based pricing for WhatsApp API, bulk messaging, SMS & RCS. Pay-as-you-go with no hidden fees.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-20">
           {tiers.map((tier, i) => (
-            <motion.div
-              key={tier.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className={`glass-card p-6 rounded-2xl flex flex-col ${tier.highlight ? "border-primary/50 glow-blue" : ""}`}
-            >
-              {tier.highlight && (
-                <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full self-start mb-4">Most Popular</span>
-              )}
-              <h3 className="text-xl font-display font-bold text-foreground">{tier.name}</h3>
-              <div className="mt-2 mb-1">
-                <span className="text-3xl font-display font-bold text-foreground">{tier.price}</span>
-                <span className="text-muted-foreground text-sm">{tier.period}</span>
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">{tier.desc}</p>
-              <p className="text-xs text-primary mb-4">Best for: {tier.bestFor}</p>
-              <ul className="space-y-2 flex-1 mb-6">
-                {tier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                    {f}
+            <motion.div key={tier.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-card p-6 rounded-2xl flex flex-col">
+              <h3 className="font-display font-bold text-lg text-foreground mb-1">{tier.name}</h3>
+              <p className="text-sm text-muted-foreground mb-6">{tier.desc}</p>
+              <ul className="space-y-3 mb-8 flex-1">
+                {tier.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    {item}
                   </li>
                 ))}
               </ul>
-              <a
-                href="/#cta"
-                className={`text-center py-2.5 rounded-xl font-semibold text-sm transition ${
-                  tier.highlight
-                    ? "bg-primary text-primary-foreground btn-glow hover:brightness-110"
-                    : "glass-card text-foreground hover:border-primary/50"
-                }`}
-              >
-                {tier.cta}
-              </a>
+              <a href="/contact" className="bg-primary text-primary-foreground px-6 py-2.5 rounded-xl font-semibold text-sm text-center btn-glow hover:brightness-110 transition">{tier.cta}</a>
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center glass-card p-8 rounded-2xl max-w-2xl mx-auto">
-          <h2 className="text-2xl font-display font-bold text-foreground mb-2">Need Volume or Custom Pricing?</h2>
-          <p className="text-muted-foreground mb-4">We offer flexible pricing for high-volume senders, resellers, and white-label partners.</p>
-          <a href="/#cta" className="bg-primary text-primary-foreground px-6 py-2.5 rounded-xl font-semibold btn-glow hover:brightness-110 transition">
-            Contact Sales for Custom Quote
-          </a>
+        <div className="glass-card p-8 rounded-2xl max-w-3xl mx-auto text-center mb-20">
+          <h2 className="text-2xl font-display font-bold text-foreground mb-2">Enterprise Custom Plans</h2>
+          <p className="text-muted-foreground mb-6">Need volume discounts, dedicated support, or custom SLAs? Contact our sales team.</p>
+          <a href="/contact" className="bg-primary text-primary-foreground px-8 py-3 rounded-xl font-semibold btn-glow hover:brightness-110 transition">Contact Sales</a>
         </div>
+
+        <section className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-display font-bold text-center mb-8">Frequently Asked Questions</h2>
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="glass-card rounded-xl px-6 border-glass-border">
+                <AccordionTrigger className="text-foreground font-display font-semibold text-left">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
       </div>
     </main>
     <Footer />

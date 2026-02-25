@@ -4,14 +4,28 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";
-import ApiDocs from "./pages/ApiDocs";
-import Enterprise from "./pages/Enterprise";
-import FAQ from "./pages/FAQ";
-import Demo from "./pages/Demo";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import Resources from "./pages/Resources";
+import Solutions from "./pages/Solutions";
+import WhatsAppBusinessAPI from "./pages/WhatsAppBusinessAPI";
+import BulkWhatsApp from "./pages/BulkWhatsApp";
+import AIWhatsAppChatbot from "./pages/AIWhatsAppChatbot";
+import RCSMessaging from "./pages/RCSMessaging";
+import BulkSMS from "./pages/BulkSMS";
+import CustomerSupport from "./pages/solutions/CustomerSupport";
+import SalesAutomation from "./pages/solutions/SalesAutomation";
+import MarketingAutomation from "./pages/solutions/MarketingAutomation";
+import EcommerceAutomation from "./pages/solutions/EcommerceAutomation";
+import WhatsAppAPIProviderIndia from "./pages/seo/WhatsAppAPIProviderIndia";
+import WhatsAppMarketingSoftware from "./pages/seo/WhatsAppMarketingSoftware";
+import BestWhatsAppCRMAlternative from "./pages/seo/BestWhatsAppCRMAlternative";
+import RCSvsSMS from "./pages/seo/RCSvsSMS";
+import WhatsAppChatbotFintech from "./pages/seo/WhatsAppChatbotFintech";
+import WhatsAppChatbotEcommerce from "./pages/seo/WhatsAppChatbotEcommerce";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminPages from "./pages/admin/AdminPages";
@@ -29,14 +43,28 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/features" element={<Features />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/api-docs" element={<ApiDocs />} />
-          <Route path="/enterprise" element={<Enterprise />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/demo" element={<Demo />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/solutions" element={<Solutions />} />
+          <Route path="/whatsapp-business-api" element={<WhatsAppBusinessAPI />} />
+          <Route path="/bulk-whatsapp" element={<BulkWhatsApp />} />
+          <Route path="/ai-whatsapp-chatbot" element={<AIWhatsAppChatbot />} />
+          <Route path="/rcs-messaging" element={<RCSMessaging />} />
+          <Route path="/bulk-sms" element={<BulkSMS />} />
+          <Route path="/solutions/customer-support-automation" element={<CustomerSupport />} />
+          <Route path="/solutions/sales-automation" element={<SalesAutomation />} />
+          <Route path="/solutions/marketing-automation" element={<MarketingAutomation />} />
+          <Route path="/solutions/ecommerce-automation" element={<EcommerceAutomation />} />
+          <Route path="/whatsapp-api-provider-india" element={<WhatsAppAPIProviderIndia />} />
+          <Route path="/whatsapp-marketing-software" element={<WhatsAppMarketingSoftware />} />
+          <Route path="/best-whatsapp-crm-alternative" element={<BestWhatsAppCRMAlternative />} />
+          <Route path="/rcs-vs-sms" element={<RCSvsSMS />} />
+          <Route path="/whatsapp-chatbot-for-fintech" element={<WhatsAppChatbotFintech />} />
+          <Route path="/whatsapp-chatbot-for-ecommerce" element={<WhatsAppChatbotEcommerce />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/pages" element={<AdminPages />} />
