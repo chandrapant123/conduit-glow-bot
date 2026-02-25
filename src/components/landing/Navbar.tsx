@@ -3,11 +3,12 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
-  { label: "Who It's For", href: "#audience" },
-  { label: "Use Cases", href: "#usecases" },
-  { label: "Security", href: "#security" },
-  { label: "Contact", href: "#cta" },
+  { label: "Features", href: "/features" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "API & Docs", href: "/api-docs" },
+  { label: "Enterprise", href: "/enterprise" },
+  { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 const Navbar = () => {
@@ -50,7 +51,7 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="#cta"
+            href="/demo"
             className="bg-primary text-primary-foreground px-5 py-2 rounded-lg text-sm font-semibold btn-glow hover:brightness-110 transition"
           >
             Start Free Trial
@@ -82,7 +83,7 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="#cta"
+            href="/demo"
             className="block bg-primary text-primary-foreground px-5 py-2 rounded-lg text-sm font-semibold text-center btn-glow"
           >
             Start Free Trial
