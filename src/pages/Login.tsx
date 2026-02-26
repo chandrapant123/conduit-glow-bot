@@ -42,7 +42,7 @@ const Login = () => {
         <div className="glass-card p-8 rounded-2xl glow-blue">
           <div className="text-center mb-8">
             <a href="/" className="inline-block mb-4">
-              <img src={pipebotLogo} alt="Pipebot" className="h-14 w-auto mx-auto" />
+              <img src={pipebotLogo} alt="Pipebot" className="h-[50px] w-auto mx-auto" />
             </a>
             <h1 className="font-display font-bold text-2xl text-foreground">Welcome Back</h1>
             <p className="text-sm text-muted-foreground mt-1">Sign in to your Pipebot account</p>

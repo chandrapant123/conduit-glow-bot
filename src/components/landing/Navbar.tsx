@@ -49,7 +49,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-3">
         <a href="/" className="flex items-center gap-2">
-          <img src={pipebotLogo} alt="Pipebot Logo" className="h-14 w-auto" />
+          <img src={pipebotLogo} alt="Pipebot Logo" className="h-[50px] w-auto" />
         </a>
 
         <div className="hidden lg:flex items-center gap-6">
