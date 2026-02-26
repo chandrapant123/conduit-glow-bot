@@ -56,12 +56,12 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <div key={link.label} className="relative group">
               {link.children ? (
-                <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <button className="flex items-center gap-1 text-sm text-primary hover:text-neon-teal transition-colors duration-200 font-medium">
                   {link.label}
                   <ChevronDown size={14} />
                 </button>
               ) : (
-                <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href={link.href} className="text-sm text-primary hover:text-neon-teal transition-colors duration-200 font-medium">
                   {link.label}
                 </a>
               )}
@@ -72,7 +72,7 @@ const Navbar = () => {
                       <a
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+                        className="block px-4 py-2.5 text-sm text-primary/80 hover:text-neon-teal hover:bg-primary/5 rounded-lg transition-colors"
                       >
                         {child.label}
                       </a>
@@ -90,7 +90,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <button className="lg:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button className="lg:hidden text-primary" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -107,7 +107,7 @@ const Navbar = () => {
                 <>
                   <button
                     onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
-                    className="flex items-center justify-between w-full text-muted-foreground hover:text-primary transition-colors py-2"
+                    className="flex items-center justify-between w-full text-primary hover:text-neon-teal transition-colors py-2 font-medium"
                   >
                     {link.label}
                     <ChevronDown size={14} className={`transition-transform ${openDropdown === link.label ? "rotate-180" : ""}`} />
@@ -115,7 +115,7 @@ const Navbar = () => {
                   {openDropdown === link.label && (
                     <div className="pl-4 space-y-1">
                       {link.children.map((child) => (
-                        <a key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="block text-sm text-muted-foreground hover:text-primary py-1.5">
+                        <a key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="block text-sm text-primary/80 hover:text-neon-teal py-1.5">
                           {child.label}
                         </a>
                       ))}
@@ -123,7 +123,7 @@ const Navbar = () => {
                   )}
                 </>
               ) : (
-                <a href={link.href} onClick={() => setMobileOpen(false)} className="block text-muted-foreground hover:text-primary transition-colors py-2">
+                <a href={link.href} onClick={() => setMobileOpen(false)} className="block text-primary hover:text-neon-teal transition-colors py-2 font-medium">
                   {link.label}
                 </a>
               )}
