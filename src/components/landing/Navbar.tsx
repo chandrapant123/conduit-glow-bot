@@ -43,36 +43,36 @@ const Navbar = () => {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-card border-b border-glass-border" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 dark-section ${
+        scrolled ? "shadow-lg border-b border-[hsl(var(--dark-border))]" : ""
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-3">
         <a href="/" className="flex items-center gap-2">
-          <img src={pipebotLogo} alt="Pipebot Logo" className="h-[50px] w-auto" />
+          <img src={pipebotLogo} alt="Pipebot Logo" className="h-[120px] w-auto" />
         </a>
 
         <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <div key={link.label} className="relative group">
               {link.children ? (
-                <button className="flex items-center gap-1 text-sm text-primary hover:text-neon-teal transition-colors duration-200 font-medium">
+                <button className="flex items-center gap-1 text-sm text-cyan-400 hover:text-cyan-300 transition-colors duration-200 font-medium">
                   {link.label}
                   <ChevronDown size={14} />
                 </button>
               ) : (
-                <a href={link.href} className="text-sm text-primary hover:text-neon-teal transition-colors duration-200 font-medium">
+                <a href={link.href} className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors duration-200 font-medium">
                   {link.label}
                 </a>
               )}
               {link.children && (
                 <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="glass-card border border-glass-border rounded-xl p-2 min-w-[240px]">
+                  <div className="bg-[hsl(var(--dark-card))] border border-[hsl(var(--dark-border))] rounded-xl p-2 min-w-[240px] shadow-xl">
                     {link.children.map((child) => (
                       <a
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2.5 text-sm text-primary/80 hover:text-neon-teal hover:bg-primary/5 rounded-lg transition-colors"
+                        className="block px-4 py-2.5 text-sm text-cyan-400/80 hover:text-cyan-300 hover:bg-white/5 rounded-lg transition-colors"
                       >
                         {child.label}
                       </a>
@@ -90,7 +90,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <button className="lg:hidden text-primary" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button className="lg:hidden text-cyan-400" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -99,7 +99,7 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden glass-card border-t border-glass-border px-6 py-4 space-y-1"
+          className="lg:hidden bg-[hsl(var(--dark-card))] border-t border-[hsl(var(--dark-border))] px-6 py-4 space-y-1"
         >
           {navLinks.map((link) => (
             <div key={link.label}>
@@ -107,7 +107,7 @@ const Navbar = () => {
                 <>
                   <button
                     onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
-                    className="flex items-center justify-between w-full text-primary hover:text-neon-teal transition-colors py-2 font-medium"
+                    className="flex items-center justify-between w-full text-cyan-400 hover:text-cyan-300 transition-colors py-2 font-medium"
                   >
                     {link.label}
                     <ChevronDown size={14} className={`transition-transform ${openDropdown === link.label ? "rotate-180" : ""}`} />
@@ -115,7 +115,7 @@ const Navbar = () => {
                   {openDropdown === link.label && (
                     <div className="pl-4 space-y-1">
                       {link.children.map((child) => (
-                        <a key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="block text-sm text-primary/80 hover:text-neon-teal py-1.5">
+                        <a key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="block text-sm text-cyan-400/80 hover:text-cyan-300 py-1.5">
                           {child.label}
                         </a>
                       ))}
@@ -123,7 +123,7 @@ const Navbar = () => {
                   )}
                 </>
               ) : (
-                <a href={link.href} onClick={() => setMobileOpen(false)} className="block text-primary hover:text-neon-teal transition-colors py-2 font-medium">
+                <a href={link.href} onClick={() => setMobileOpen(false)} className="block text-cyan-400 hover:text-cyan-300 transition-colors py-2 font-medium">
                   {link.label}
                 </a>
               )}

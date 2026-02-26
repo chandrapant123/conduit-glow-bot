@@ -6,46 +6,52 @@
 
 @layer base {
   :root {
-    --background: 230 35% 7%;
-    --foreground: 210 40% 96%;
+    --background: 210 20% 96%;
+    --foreground: 230 25% 18%;
 
-    --card: 230 30% 10%;
-    --card-foreground: 210 40% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 18%;
 
-    --popover: 230 30% 10%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 18%;
 
-    --primary: 195 100% 50%;
-    --primary-foreground: 230 35% 7%;
+    --primary: 195 100% 40%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 270 60% 55%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 230 25% 15%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 210 15% 90%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 160 100% 45%;
-    --accent-foreground: 230 35% 7%;
+    --accent: 160 100% 40%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 230 25% 18%;
-    --input: 230 25% 18%;
-    --ring: 195 100% 50%;
+    --border: 210 15% 85%;
+    --input: 210 15% 85%;
+    --ring: 195 100% 40%;
 
     --radius: 0.75rem;
 
     /* Custom Pipebot tokens */
-    --neon-blue: 195 100% 50%;
-    --neon-teal: 170 100% 50%;
-    --neon-magenta: 320 100% 60%;
-    --neon-lime: 100 100% 55%;
-    --glass-bg: 230 30% 12%;
-    --glass-border: 230 25% 22%;
-    --gradient-start: 230 40% 8%;
-    --gradient-mid: 260 35% 12%;
-    --gradient-end: 230 35% 6%;
+    --neon-blue: 195 100% 45%;
+    --neon-teal: 170 100% 40%;
+    --neon-magenta: 320 100% 55%;
+    --neon-lime: 100 100% 45%;
+    --glass-bg: 0 0% 100%;
+    --glass-border: 210 15% 88%;
+    --gradient-start: 210 20% 97%;
+    --gradient-mid: 210 25% 94%;
+    --gradient-end: 210 20% 96%;
+
+    /* Dark sections (header/footer) */
+    --dark-bg: 230 35% 7%;
+    --dark-fg: 210 40% 96%;
+    --dark-card: 230 30% 10%;
+    --dark-border: 230 25% 18%;
 
     --sidebar-background: 230 30% 10%;
     --sidebar-foreground: 210 40% 96%;
@@ -75,19 +81,24 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/40 backdrop-blur-xl border border-glass-border rounded-2xl;
+    @apply bg-card/80 backdrop-blur-xl border border-glass-border rounded-2xl shadow-sm;
+  }
+
+  .dark-section {
+    background: hsl(var(--dark-bg));
+    color: hsl(var(--dark-fg));
   }
 
   .glow-blue {
-    box-shadow: 0 0 20px hsl(195 100% 50% / 0.3), 0 0 60px hsl(195 100% 50% / 0.1);
+    box-shadow: 0 0 20px hsl(195 100% 45% / 0.2), 0 0 60px hsl(195 100% 45% / 0.08);
   }
 
   .glow-teal {
-    box-shadow: 0 0 20px hsl(170 100% 50% / 0.3), 0 0 60px hsl(170 100% 50% / 0.1);
+    box-shadow: 0 0 20px hsl(170 100% 40% / 0.2), 0 0 60px hsl(170 100% 40% / 0.08);
   }
 
   .glow-magenta {
-    box-shadow: 0 0 20px hsl(320 100% 60% / 0.3), 0 0 60px hsl(320 100% 60% / 0.1);
+    box-shadow: 0 0 20px hsl(320 100% 55% / 0.2), 0 0 60px hsl(320 100% 55% / 0.08);
   }
 
   .text-gradient-primary {
@@ -100,12 +111,12 @@
 
   .btn-glow {
     @apply relative overflow-hidden;
-    box-shadow: 0 0 20px hsl(195 100% 50% / 0.4), 0 4px 30px hsl(195 100% 50% / 0.2);
+    box-shadow: 0 0 20px hsl(195 100% 45% / 0.3), 0 4px 30px hsl(195 100% 45% / 0.15);
     transition: box-shadow 0.3s ease;
   }
 
   .btn-glow:hover {
-    box-shadow: 0 0 30px hsl(195 100% 50% / 0.6), 0 4px 40px hsl(195 100% 50% / 0.3);
+    box-shadow: 0 0 30px hsl(195 100% 45% / 0.5), 0 4px 40px hsl(195 100% 45% / 0.25);
   }
 
   .section-gradient {
@@ -122,7 +133,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      hsl(195 100% 50% / 0.5) 50%,
+      hsl(195 100% 45% / 0.5) 50%,
       transparent 100%
     );
   }

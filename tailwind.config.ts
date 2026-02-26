@@ -56,6 +56,8 @@ export default {
         "neon-magenta": "hsl(var(--neon-magenta))",
         "neon-lime": "hsl(var(--neon-lime))",
         "glass-border": "hsl(var(--glass-border))",
+        "dark-bg": "hsl(var(--dark-bg))",
+        "dark-fg": "hsl(var(--dark-fg))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
