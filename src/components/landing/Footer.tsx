@@ -32,7 +32,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-5 gap-10 mb-12">
         <div>
           <a href="/" className="flex items-center gap-2 mb-4">
-            <img src={pipebotLogo} alt="Pipebot" className="h-14 w-auto" />
+            <img src={pipebotLogo} alt="Pipebot" className="h-[50px] w-auto" />
           </a>
           <p className="text-sm text-primary/70 leading-relaxed">
             AI-powered WhatsApp & messaging automation platform for sales, support & marketing.

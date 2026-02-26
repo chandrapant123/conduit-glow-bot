@@ -1,8 +1,14 @@
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
+import PainPoints from "@/components/landing/PainPoints";
 import WhyPipebot from "@/components/landing/WhyPipebot";
 import FeaturesGrid from "@/components/landing/FeaturesGrid";
+import AIHighlight from "@/components/landing/AIHighlight";
+import MarketingSection from "@/components/landing/MarketingSection";
+import SalesSupport from "@/components/landing/SalesSupport";
 import AudienceCards from "@/components/landing/AudienceCards";
+import EcommerceSection from "@/components/landing/EcommerceSection";
+import StatsSection from "@/components/landing/StatsSection";
 import UseCases from "@/components/landing/UseCases";
 import MultiTenant from "@/components/landing/MultiTenant";
 import Security from "@/components/landing/Security";
@@ -14,9 +20,15 @@ const Index = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
       <Hero />
+      <PainPoints />
       <WhyPipebot />
       <FeaturesGrid />
+      <AIHighlight />
+      <MarketingSection />
+      <SalesSupport />
       <AudienceCards />
+      <EcommerceSection />
+      <StatsSection />
       <UseCases />
       <MultiTenant />
       <Security />
