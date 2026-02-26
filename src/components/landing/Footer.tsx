@@ -27,30 +27,30 @@ const footerLinks = {
 };
 
 const Footer = () => (
-  <footer className="border-t border-glass-border py-16">
+  <footer className="dark-section py-16">
     <div className="container mx-auto px-6">
       <div className="grid md:grid-cols-5 gap-10 mb-12">
         <div>
           <a href="/" className="flex items-center gap-2 mb-4">
-            <img src={pipebotLogo} alt="Pipebot" className="h-[50px] w-auto" />
+            <img src={pipebotLogo} alt="Pipebot" className="h-[120px] w-auto" />
           </a>
-          <p className="text-sm text-primary/70 leading-relaxed">
+          <p className="text-sm text-cyan-400/70 leading-relaxed">
             AI-powered WhatsApp & messaging automation platform for sales, support & marketing.
           </p>
           <p className="text-sm mt-3">
-            <a href="mailto:info@pipebot.ai" className="text-primary hover:text-neon-teal transition-colors">info@pipebot.ai</a>
+            <a href="mailto:info@pipebot.ai" className="text-cyan-400 hover:text-cyan-300 transition-colors">info@pipebot.ai</a>
             <br />
-            <a href="tel:+919599923365" className="text-primary hover:text-neon-teal transition-colors">+91 95999 23365</a>
+            <a href="tel:+919599923365" className="text-cyan-400 hover:text-cyan-300 transition-colors">+91 95999 23365</a>
           </p>
         </div>
 
         {Object.entries(footerLinks).map(([title, links]) => (
           <div key={title}>
-            <h4 className="font-display font-bold text-sm text-primary mb-4">{title}</h4>
+            <h4 className="font-display font-bold text-sm text-cyan-300 mb-4">{title}</h4>
             <ul className="space-y-2">
               {links.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-sm text-primary/70 hover:text-neon-teal transition-colors">
+                  <a href={link.href} className="text-sm text-cyan-400/70 hover:text-cyan-300 transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -61,7 +61,7 @@ const Footer = () => (
       </div>
 
       <div className="neon-line mb-6" />
-      <p className="text-center text-xs text-primary/50">
+      <p className="text-center text-xs text-cyan-400/50">
         © {new Date().getFullYear()} Pipebot. All rights reserved. Powered by AI.
       </p>
     </div>
