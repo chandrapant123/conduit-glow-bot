@@ -43,25 +43,25 @@ const Navbar = () => {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r from-[hsl(195,80%,25%)] to-[hsl(180,60%,30%)] ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
         scrolled ? "shadow-lg" : ""
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-2">
         <a href="/" className="flex items-center gap-2">
-          <img src={pipebotLogo} alt="Pipebot Logo" className="h-[120px] w-auto" />
+          <img src={pipebotLogo} alt="Pipebot Logo" className="h-[120px] w-auto mix-blend-multiply" />
         </a>
 
         <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <div key={link.label} className="relative group">
               {link.children ? (
-                <button className="flex items-center gap-1 text-sm text-white/90 hover:text-white transition-colors duration-200 font-medium">
+                <button className="flex items-center gap-1 text-sm text-foreground/80 hover:text-primary transition-colors duration-200 font-medium">
                   {link.label}
                   <ChevronDown size={14} />
                 </button>
               ) : (
-                <a href={link.href} className="text-sm text-white/90 hover:text-white transition-colors duration-200 font-medium">
+                <a href={link.href} className="text-sm text-foreground/80 hover:text-primary transition-colors duration-200 font-medium">
                   {link.label}
                 </a>
               )}
@@ -84,13 +84,13 @@ const Navbar = () => {
           ))}
           <a
             href="/contact"
-            className="bg-white text-primary px-5 py-2 rounded-lg text-sm font-semibold hover:bg-white/90 transition shadow-md"
+            className="bg-primary text-primary-foreground px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition shadow-md"
           >
             Get Started
           </a>
         </div>
 
-        <button className="lg:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button className="lg:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
