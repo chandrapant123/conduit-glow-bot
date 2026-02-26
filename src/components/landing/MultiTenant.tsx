@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageSquare, Send, Bot, Smartphone, Mail } from "lucide-react";
+import platformOverview from "@/assets/platform-overview.png";
 
 const whatIs = [
   { icon: MessageSquare, label: "WhatsApp API", desc: "Official API integration for scalable communication." },
@@ -36,20 +37,25 @@ const MultiTenant = () => (
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="glass-card p-8 glow-blue">
-          <h3 className="font-display font-bold text-xl mb-6 text-foreground text-center">Platform Highlights</h3>
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { v: "99.9%", l: "Uptime" },
-              { v: "10M+", l: "Messages/mo" },
-              { v: "50+", l: "Integrations" },
-              { v: "24/7", l: "AI Support" },
-            ].map((s) => (
-              <div key={s.l} className="glass-card p-4 text-center border-glass-border">
-                <p className="text-2xl font-bold text-primary">{s.v}</p>
-                <p className="text-xs text-muted-foreground mt-1">{s.l}</p>
-              </div>
-            ))}
+        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
+          <div className="rounded-2xl overflow-hidden glow-blue">
+            <img src={platformOverview} alt="Pipebot unified messaging platform overview" className="w-full h-auto" loading="lazy" />
+          </div>
+          {/* Stats overlay */}
+          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[90%]">
+            <div className="glass-card p-4 rounded-xl grid grid-cols-4 gap-4">
+              {[
+                { v: "99.9%", l: "Uptime" },
+                { v: "10M+", l: "Messages/mo" },
+                { v: "50+", l: "Integrations" },
+                { v: "24/7", l: "AI Support" },
+              ].map((s) => (
+                <div key={s.l} className="text-center">
+                  <p className="text-lg font-bold text-primary">{s.v}</p>
+                  <p className="text-xs text-muted-foreground">{s.l}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

@@ -32,6 +32,8 @@ import AdminPages from "./pages/admin/AdminPages";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminSettings from "./pages/admin/AdminSettings";
 import AdminEnquiries from "./pages/admin/AdminEnquiries";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -67,6 +69,8 @@ const App = () => (
           <Route path="/whatsapp-chatbot-for-fintech" element={<WhatsAppChatbotFintech />} />
           <Route path="/whatsapp-chatbot-for-ecommerce" element={<WhatsAppChatbotEcommerce />} />
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/pages" element={<AdminPages />} />
           <Route path="/admin/blog" element={<AdminBlog />} />
