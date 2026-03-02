@@ -16,12 +16,28 @@ const solutionLinks = [
   { label: "Sales Automation", href: "/solutions/sales-automation" },
   { label: "Marketing Automation", href: "/solutions/marketing-automation" },
   { label: "E-commerce Automation", href: "/solutions/ecommerce-automation" },
+  { label: "AI Agents for Business", href: "/solutions/ai-agents" },
+  { label: "Enterprise AI Agents", href: "/enterprise-ai-agents" },
+];
+
+const industryLinks = [
+  { label: "E-commerce", href: "/whatsapp-automation-for-ecommerce" },
+  { label: "Real Estate", href: "/whatsapp-ai-automation-for-real-estate" },
+  { label: "Healthcare", href: "/whatsapp-automation-for-healthcare" },
+  { label: "EdTech", href: "/whatsapp-ai-for-edtech" },
+  { label: "Fintech & Lending", href: "/whatsapp-automation-for-fintech" },
+  { label: "Restaurants", href: "/whatsapp-automation-for-restaurants" },
+  { label: "Travel", href: "/whatsapp-ai-for-travel-agencies" },
+  { label: "B2B & Manufacturing", href: "/whatsapp-automation-for-b2b" },
+  { label: "D2C Brands", href: "/whatsapp-automation-for-d2c" },
+  { label: "Insurance", href: "/whatsapp-automation-for-insurance" },
 ];
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Products", href: "#", children: productLinks },
   { label: "Solutions", href: "/solutions", children: solutionLinks },
+  { label: "Industries", href: "#", children: industryLinks },
   { label: "Pricing", href: "/pricing" },
   { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
@@ -67,7 +83,7 @@ const Navbar = () => {
               )}
               {link.children && (
                 <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-white rounded-xl p-2 min-w-[240px] shadow-xl border border-border">
+                  <div className="bg-white rounded-xl p-2 min-w-[240px] shadow-xl border border-border max-h-[400px] overflow-y-auto">
                     {link.children.map((child) => (
                       <a
                         key={child.href}
@@ -99,7 +115,7 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden bg-white border-t border-border px-6 py-4 space-y-1"
+          className="lg:hidden bg-white border-t border-border px-6 py-4 space-y-1 max-h-[80vh] overflow-y-auto"
         >
           {navLinks.map((link) => (
             <div key={link.label}>
