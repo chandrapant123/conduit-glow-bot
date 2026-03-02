@@ -12,7 +12,20 @@ const footerLinks = {
     { label: "Customer Support", href: "/solutions/customer-support-automation" },
     { label: "Sales Automation", href: "/solutions/sales-automation" },
     { label: "Marketing Automation", href: "/solutions/marketing-automation" },
-    { label: "E-commerce", href: "/solutions/ecommerce-automation" },
+    { label: "AI Agents", href: "/solutions/ai-agents" },
+    { label: "Enterprise AI", href: "/enterprise-ai-agents" },
+  ],
+  Industries: [
+    { label: "E-commerce", href: "/whatsapp-automation-for-ecommerce" },
+    { label: "Real Estate", href: "/whatsapp-ai-automation-for-real-estate" },
+    { label: "Healthcare", href: "/whatsapp-automation-for-healthcare" },
+    { label: "Fintech", href: "/whatsapp-automation-for-fintech" },
+    { label: "EdTech", href: "/whatsapp-ai-for-edtech" },
+    { label: "D2C Brands", href: "/whatsapp-automation-for-d2c" },
+    { label: "Insurance", href: "/whatsapp-automation-for-insurance" },
+    { label: "Travel", href: "/whatsapp-ai-for-travel-agencies" },
+    { label: "B2B", href: "/whatsapp-automation-for-b2b" },
+    { label: "Restaurants", href: "/whatsapp-automation-for-restaurants" },
   ],
   Resources: [
     { label: "Blog", href: "/blog" },
@@ -29,7 +42,7 @@ const footerLinks = {
 const Footer = () => (
   <footer className="bg-gradient-to-r from-[hsl(195,80%,25%)] to-[hsl(180,60%,30%)] py-16">
     <div className="container mx-auto px-6">
-      <div className="grid md:grid-cols-5 gap-10 mb-12">
+      <div className="grid md:grid-cols-6 gap-10 mb-12">
         <div>
           <a href="/" className="flex items-center gap-2 mb-4">
             <img src={pipebotLogo} alt="Pipebot" className="h-[120px] w-auto" />

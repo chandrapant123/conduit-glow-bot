@@ -21,6 +21,18 @@ import CustomerSupport from "./pages/solutions/CustomerSupport";
 import SalesAutomation from "./pages/solutions/SalesAutomation";
 import MarketingAutomation from "./pages/solutions/MarketingAutomation";
 import EcommerceAutomation from "./pages/solutions/EcommerceAutomation";
+import AIAgents from "./pages/solutions/AIAgents";
+import EnterpriseAI from "./pages/solutions/EnterpriseAI";
+import EcommerceIndustry from "./pages/industries/EcommerceIndustry";
+import RealEstateIndustry from "./pages/industries/RealEstateIndustry";
+import HealthcareIndustry from "./pages/industries/HealthcareIndustry";
+import EdtechIndustry from "./pages/industries/EdtechIndustry";
+import FintechIndustry from "./pages/industries/FintechIndustry";
+import RestaurantIndustry from "./pages/industries/RestaurantIndustry";
+import TravelIndustry from "./pages/industries/TravelIndustry";
+import B2BIndustry from "./pages/industries/B2BIndustry";
+import D2CIndustry from "./pages/industries/D2CIndustry";
+import InsuranceIndustry from "./pages/industries/InsuranceIndustry";
 import WhatsAppAPIProviderIndia from "./pages/seo/WhatsAppAPIProviderIndia";
 import WhatsAppMarketingSoftware from "./pages/seo/WhatsAppMarketingSoftware";
 import BestWhatsAppCRMAlternative from "./pages/seo/BestWhatsAppCRMAlternative";
@@ -63,6 +75,18 @@ const App = () => (
           <Route path="/solutions/sales-automation" element={<SalesAutomation />} />
           <Route path="/solutions/marketing-automation" element={<MarketingAutomation />} />
           <Route path="/solutions/ecommerce-automation" element={<EcommerceAutomation />} />
+          <Route path="/solutions/ai-agents" element={<AIAgents />} />
+          <Route path="/enterprise-ai-agents" element={<EnterpriseAI />} />
+          <Route path="/whatsapp-automation-for-ecommerce" element={<EcommerceIndustry />} />
+          <Route path="/whatsapp-ai-automation-for-real-estate" element={<RealEstateIndustry />} />
+          <Route path="/whatsapp-automation-for-healthcare" element={<HealthcareIndustry />} />
+          <Route path="/whatsapp-ai-for-edtech" element={<EdtechIndustry />} />
+          <Route path="/whatsapp-automation-for-fintech" element={<FintechIndustry />} />
+          <Route path="/whatsapp-automation-for-restaurants" element={<RestaurantIndustry />} />
+          <Route path="/whatsapp-ai-for-travel-agencies" element={<TravelIndustry />} />
+          <Route path="/whatsapp-automation-for-b2b" element={<B2BIndustry />} />
+          <Route path="/whatsapp-automation-for-d2c" element={<D2CIndustry />} />
+          <Route path="/whatsapp-automation-for-insurance" element={<InsuranceIndustry />} />
           <Route path="/whatsapp-api-provider-india" element={<WhatsAppAPIProviderIndia />} />
           <Route path="/whatsapp-marketing-software" element={<WhatsAppMarketingSoftware />} />
           <Route path="/best-whatsapp-crm-alternative" element={<BestWhatsAppCRMAlternative />} />
