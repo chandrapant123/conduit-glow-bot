@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://pipebot.ai/sitemap.xml
+Sitemap: https://rvlknfmhrsvksezcldbf.supabase.co/functions/v1/sitemap?type=index&base=https://pipebot.ai

@@ -47,6 +47,7 @@ import AdminSettings from "./pages/admin/AdminSettings";
 import AdminEnquiries from "./pages/admin/AdminEnquiries";
 import AdminSeoPages from "./pages/admin/AdminSeoPages";
 import SeoPage from "./pages/SeoPage";
+import SitemapRedirect from "./pages/SitemapRedirect";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
@@ -104,6 +105,10 @@ const App = () => (
           <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/admin/enquiries" element={<AdminEnquiries />} />
           <Route path="/admin/seo" element={<AdminSeoPages />} />
+          <Route path="/sitemap.xml" element={<SitemapRedirect />} />
+          <Route path="/sitemap-static.xml" element={<SitemapRedirect />} />
+          <Route path="/sitemap-seo.xml" element={<SitemapRedirect />} />
+          <Route path="/sitemap-blog.xml" element={<SitemapRedirect />} />
           <Route path="/:slug" element={<SeoPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
