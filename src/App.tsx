@@ -47,6 +47,7 @@ import AdminSettings from "./pages/admin/AdminSettings";
 import AdminEnquiries from "./pages/admin/AdminEnquiries";
 import AdminSeoPages from "./pages/admin/AdminSeoPages";
 import SeoPage from "./pages/SeoPage";
+import SitemapRedirect from "./pages/SitemapRedirect";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
