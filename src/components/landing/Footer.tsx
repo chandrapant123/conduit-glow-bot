@@ -29,9 +29,19 @@ const footerLinks = {
   ],
   Resources: [
     { label: "Blog", href: "/blog" },
+    { label: "Resources", href: "/resources" },
     { label: "Pricing", href: "/pricing" },
     { label: "Contact", href: "/contact" },
     { label: "FAQ", href: "/faq" },
+    { label: "Sitemap", href: "/sitemap.xml" },
+  ],
+  "SEO Pages": [
+    { label: "WhatsApp API for Fintech", href: "/whatsapp-api-for-fintech-india" },
+    { label: "AI Chatbot for Healthcare", href: "/ai-chatbot-for-healthcare-india" },
+    { label: "CRM Automation for Real Estate", href: "/crm-automation-for-real-estate-india" },
+    { label: "Bulk SMS for Ecommerce", href: "/bulk-sms-for-ecommerce-india" },
+    { label: "WhatsApp Marketing for EdTech", href: "/whatsapp-marketing-for-education-india" },
+    { label: "AI Sales Agent for Insurance", href: "/ai-sales-agent-for-insurance-india" },
   ],
   Account: [
     { label: "Login", href: "/login" },
@@ -42,7 +52,7 @@ const footerLinks = {
 const Footer = () => (
   <footer className="bg-gradient-to-r from-[hsl(195,80%,25%)] to-[hsl(180,60%,30%)] py-16">
     <div className="container mx-auto px-6">
-      <div className="grid md:grid-cols-6 gap-10 mb-12">
+      <div className="grid md:grid-cols-4 lg:grid-cols-7 gap-10 mb-12">
         <div>
           <a href="/" className="flex items-center gap-2 mb-4">
             <img src={pipebotLogo} alt="Pipebot" className="h-[120px] w-auto" />
