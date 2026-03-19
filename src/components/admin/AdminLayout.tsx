@@ -1,7 +1,7 @@
 import { useEffect, useState, ReactNode } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { LayoutDashboard, FileText, Settings, BookOpen, LogOut, Menu, X, MessageSquare } from "lucide-react";
+import { LayoutDashboard, FileText, Settings, BookOpen, LogOut, Menu, X, MessageSquare, Search } from "lucide-react";
 import pipebotLogo from "@/assets/pipebot-logo.png";
 
 interface AdminLayoutProps {
