@@ -13,6 +13,7 @@ const navItems = [
   { label: "Pages & SEO", href: "/admin/pages", icon: FileText },
   { label: "Blog", href: "/admin/blog", icon: BookOpen },
   { label: "Enquiries", href: "/admin/enquiries", icon: MessageSquare },
+  { label: "SEO Pages", href: "/admin/seo", icon: Search },
   { label: "Site Settings", href: "/admin/settings", icon: Settings },
 ];
 
