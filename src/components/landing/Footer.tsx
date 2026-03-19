@@ -29,9 +29,19 @@ const footerLinks = {
   ],
   Resources: [
     { label: "Blog", href: "/blog" },
+    { label: "Resources", href: "/resources" },
     { label: "Pricing", href: "/pricing" },
     { label: "Contact", href: "/contact" },
     { label: "FAQ", href: "/faq" },
+    { label: "Sitemap", href: "/sitemap.xml" },
+  ],
+  "SEO Pages": [
+    { label: "WhatsApp API for Fintech", href: "/whatsapp-api-for-fintech-india" },
+    { label: "AI Chatbot for Healthcare", href: "/ai-chatbot-for-healthcare-india" },
+    { label: "CRM Automation for Real Estate", href: "/crm-automation-for-real-estate-india" },
+    { label: "Bulk SMS for Ecommerce", href: "/bulk-sms-for-ecommerce-india" },
+    { label: "WhatsApp Marketing for EdTech", href: "/whatsapp-marketing-for-education-india" },
+    { label: "AI Sales Agent for Insurance", href: "/ai-sales-agent-for-insurance-india" },
   ],
   Account: [
     { label: "Login", href: "/login" },
