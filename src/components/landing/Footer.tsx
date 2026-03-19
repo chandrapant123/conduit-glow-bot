@@ -52,7 +52,7 @@ const footerLinks = {
 const Footer = () => (
   <footer className="bg-gradient-to-r from-[hsl(195,80%,25%)] to-[hsl(180,60%,30%)] py-16">
     <div className="container mx-auto px-6">
-      <div className="grid md:grid-cols-6 gap-10 mb-12">
+      <div className="grid md:grid-cols-4 lg:grid-cols-7 gap-10 mb-12">
         <div>
           <a href="/" className="flex items-center gap-2 mb-4">
             <img src={pipebotLogo} alt="Pipebot" className="h-[120px] w-auto" />
