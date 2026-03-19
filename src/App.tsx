@@ -105,6 +105,10 @@ const App = () => (
           <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/admin/enquiries" element={<AdminEnquiries />} />
           <Route path="/admin/seo" element={<AdminSeoPages />} />
+          <Route path="/sitemap.xml" element={<SitemapRedirect />} />
+          <Route path="/sitemap-static.xml" element={<SitemapRedirect />} />
+          <Route path="/sitemap-seo.xml" element={<SitemapRedirect />} />
+          <Route path="/sitemap-blog.xml" element={<SitemapRedirect />} />
           <Route path="/:slug" element={<SeoPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

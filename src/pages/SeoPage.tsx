@@ -12,6 +12,9 @@ const SeoPage = () => {
   const [page, setPage] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [relatedServices, setRelatedServices] = useState<any[]>([]);
+  const [relatedIndustries, setRelatedIndustries] = useState<any[]>([]);
+  const [relatedBlogs, setRelatedBlogs] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchPage = async () => {
@@ -22,7 +25,35 @@ const SeoPage = () => {
         .eq("slug", slug)
         .eq("is_published", true)
         .single();
-      if (error || !data) { setNotFound(true); } else { setPage(data); }
+      if (error || !data) { setNotFound(true); setLoading(false); return; }
+      setPage(data);
+
+      // Fetch related pages and blogs in parallel
+      const [serviceRes, industryRes, blogRes] = await Promise.all([
+        supabase
+          .from("seo_pages")
+          .select("slug, title, service")
+          .eq("is_published", true)
+          .eq("service", data.service)
+          .neq("slug", slug)
+          .limit(3),
+        supabase
+          .from("seo_pages")
+          .select("slug, title, industry")
+          .eq("is_published", true)
+          .eq("industry", data.industry)
+          .neq("slug", slug)
+          .limit(3),
+        supabase
+          .from("blog_posts")
+          .select("slug, title")
+          .eq("is_published", true)
+          .limit(3),
+      ]);
+
+      setRelatedServices(serviceRes.data || []);
+      setRelatedIndustries(industryRes.data || []);
+      setRelatedBlogs(blogRes.data || []);
       setLoading(false);
     };
     fetchPage();
@@ -73,6 +104,8 @@ const SeoPage = () => {
     })),
   } : null;
 
+  const hasRelatedLinks = relatedServices.length > 0 || relatedIndustries.length > 0 || relatedBlogs.length > 0;
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -116,6 +149,59 @@ const SeoPage = () => {
           />
         </div>
       </section>
+
+      {/* Internal Linking Section */}
+      {hasRelatedLinks && (
+        <section className="py-16 bg-muted/20">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h2 className="text-2xl font-display font-bold text-foreground mb-8 text-center">Explore More</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {relatedServices.length > 0 && (
+                <div>
+                  <h3 className="font-display font-semibold text-foreground mb-4 text-sm uppercase tracking-wider text-primary">Related Services</h3>
+                  <ul className="space-y-3">
+                    {relatedServices.map((p: any) => (
+                      <li key={p.slug}>
+                        <a href={`/${p.slug}`} className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-2 hover:underline">
+                          {p.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {relatedIndustries.length > 0 && (
+                <div>
+                  <h3 className="font-display font-semibold text-foreground mb-4 text-sm uppercase tracking-wider text-primary">Related Industries</h3>
+                  <ul className="space-y-3">
+                    {relatedIndustries.map((p: any) => (
+                      <li key={p.slug}>
+                        <a href={`/${p.slug}`} className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-2 hover:underline">
+                          {p.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {relatedBlogs.length > 0 && (
+                <div>
+                  <h3 className="font-display font-semibold text-foreground mb-4 text-sm uppercase tracking-wider text-primary">From Our Blog</h3>
+                  <ul className="space-y-3">
+                    {relatedBlogs.map((p: any) => (
+                      <li key={p.slug}>
+                        <a href={`/blog/${p.slug}`} className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-2 hover:underline">
+                          {p.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FAQs */}
       {faqs.length > 0 && (

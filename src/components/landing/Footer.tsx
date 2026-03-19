@@ -33,7 +33,7 @@ const footerLinks = {
     { label: "Pricing", href: "/pricing" },
     { label: "Contact", href: "/contact" },
     { label: "FAQ", href: "/faq" },
-    { label: "Sitemap", href: "/sitemap.xml" },
+    { label: "Sitemap", href: `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/sitemap?type=index&base=https://pipebot.ai` },
   ],
   "SEO Pages": [
     { label: "WhatsApp API for Fintech", href: "/whatsapp-api-for-fintech-india" },
