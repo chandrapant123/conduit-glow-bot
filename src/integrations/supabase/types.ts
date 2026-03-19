@@ -222,6 +222,111 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_page_tags: {
+        Row: {
+          id: string
+          page_id: string
+          tag_id: string
+        }
+        Insert: {
+          id?: string
+          page_id: string
+          tag_id: string
+        }
+        Update: {
+          id?: string
+          page_id?: string
+          tag_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "seo_page_tags_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "seo_pages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "seo_page_tags_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "seo_tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      seo_pages: {
+        Row: {
+          content: string | null
+          created_at: string
+          faqs: Json | null
+          id: string
+          industry: string
+          is_published: boolean
+          location: string
+          meta_description: string | null
+          meta_keywords: string | null
+          meta_title: string | null
+          service: string
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string
+          faqs?: Json | null
+          id?: string
+          industry: string
+          is_published?: boolean
+          location?: string
+          meta_description?: string | null
+          meta_keywords?: string | null
+          meta_title?: string | null
+          service: string
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string | null
+          created_at?: string
+          faqs?: Json | null
+          id?: string
+          industry?: string
+          is_published?: boolean
+          location?: string
+          meta_description?: string | null
+          meta_keywords?: string | null
+          meta_title?: string | null
+          service?: string
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      seo_tags: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
       site_settings: {
         Row: {
           id: string

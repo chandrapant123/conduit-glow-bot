@@ -1,10 +1,12 @@
 import AdminLayout from "@/components/admin/AdminLayout";
-import { FileText, BookOpen, Settings, Globe } from "lucide-react";
+import { FileText, BookOpen, Settings, Globe, Search, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const cards = [
   { title: "Pages & SEO", desc: "Manage page content, meta titles, descriptions, and keywords", icon: FileText, href: "/admin/pages" },
+  { title: "SEO Pages", desc: "Generate AI-powered SEO pages at scale (services × industries × locations)", icon: Search, href: "/admin/seo" },
   { title: "Blog Posts", desc: "Create, edit, and publish blog articles", icon: BookOpen, href: "/admin/blog" },
+  { title: "Enquiries", desc: "View and manage demo requests and contact form leads", icon: MessageSquare, href: "/admin/enquiries" },
   { title: "Site Settings", desc: "Update header, footer, menu, and global settings", icon: Settings, href: "/admin/settings" },
   { title: "View Site", desc: "Open the live website in a new tab", icon: Globe, href: "/", external: true },
 ];

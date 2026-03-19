@@ -45,6 +45,8 @@ import AdminPages from "./pages/admin/AdminPages";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminSettings from "./pages/admin/AdminSettings";
 import AdminEnquiries from "./pages/admin/AdminEnquiries";
+import AdminSeoPages from "./pages/admin/AdminSeoPages";
+import SeoPage from "./pages/SeoPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
@@ -101,6 +103,8 @@ const App = () => (
           <Route path="/admin/blog" element={<AdminBlog />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/admin/enquiries" element={<AdminEnquiries />} />
+          <Route path="/admin/seo" element={<AdminSeoPages />} />
+          <Route path="/:slug" element={<SeoPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <WhatsAppWidget />
